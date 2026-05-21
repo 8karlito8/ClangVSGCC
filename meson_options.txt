@@ -1,0 +1,16 @@
+option('workload',
+  type        : 'combo',
+  choices     : ['particle', 'matrix'],
+  value       : 'particle',
+  description : 'Which workload to compile')
+
+option('variant',
+  type        : 'combo',
+  choices     : ['aos', 'soa', 'aligned', 'row_major', 'tile_contiguous'],
+  value       : 'aos',
+  description : 'Memory layout variant')
+
+option('disable_perf_counter',
+  type        : 'boolean',
+  value       : false,
+  description : 'Compile out in-process PerfCounterGroup (use for perf-stat-only pass B runs)')
