@@ -31,7 +31,8 @@ Edit `/etc/default/grub`:
 ```bash
 GRUB_CMDLINE_LINUX_DEFAULT="... isolcpus=15,7 nohz_full=15,7 rcu_nocbs=15,7"
 ```
-NOTE: Make sure to check for your CPU specifics.
+
+**Why CPUs 7 and 15?** Ryzen 5800X has two 4-core CCX (Core Complex) units. CPUs 7 and 15 are paired on the same L3 cache and share memory fabric. Isolating both prevents cross-core interference and ensures the benchmark core (CPU 15) has exclusive L3 cache access. For other CPUs, check your core topology: `lscpu` or `hwloc-lstopo`.
 
 Update and reboot:
 ```bash
